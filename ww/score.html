@@ -30,11 +30,18 @@
             <tbody>
                 <tr>
                     <td>Nb Word(s) found</td>
-                    <td>42</td>
+                    <td id = "score">
+                        <script>
+                        score = localStorage.setItem("score")
+                            if(score == null)
+                                $("score").html(0)
+                            else
+                                $("#score").html(score)</script>
+                    </td>
                 </tr>
                 <tr>
                     <td>Average try</td>
-                    <td>Data</td>
+                    <td id = "average">Data</td>
                 </tr>
             </tbody>
         </table>
@@ -44,21 +51,10 @@
     </body>
 
     <script>
-        let scoreJson = {
-            total,
-            average 
-        }
-
-        let scoreLinea = JSON.stringify(scoreJson)
-        localStorage.setItem("score",scoreLinea)
-        localStorage.getItem("score")
-
-        score = {total : 5, average : 3.6}
-
-        localStorage.setItem("score_object", JSON.stringify(score))
-
-        var score_stringify = localStorage.getItem("score_object")
-
-        JSON.parse(score_stringify)
+        score = localStorage.getItem("score")
+        if(score == null)
+            $("score").html(0)
+        else
+            $("#score").html(score)
     </script>
 </html>

@@ -56,9 +56,12 @@
             submit_response()
         }); 
       });
+    score = localStorage.getItem("score") 
+    localStorage.setItem("score",0)
 
     function submit_response(){
         console.log('submit ')
+        compteur = 0
         proposal = $("#valeur").val().toUpperCase()
         if(proposal.length != current_word.length){
             alert("incorrect word length")
@@ -78,7 +81,17 @@
                 found = false;
                 proposal_analysis += getSpan(letter,'white')
             }
+            
         }
+        if(proposal== current_word){
+            compteur = compteur+1
+            localStorage.setItem("score",compteur)
+        }
+        if(score == null)
+            $("score").html(0)
+        else
+            $("#score").html(score)
+
         $("#progress").append(proposal_analysis+"<br />") 
         $("#valeur").val('')
         $("#valeur").focus()
