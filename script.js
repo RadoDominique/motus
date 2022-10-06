@@ -31,7 +31,7 @@ var array = fs.readFileSync(__dirname+'/data/liste_francais_utf8.txt', 'utf8', (
 
   //appel pour recuperer le mot
 app.get('/wordguess', (req, res) => {
-    const random = (dateJour*10);
+    const random = (dateJour*12);
   res.send(array[random]);
 })
 

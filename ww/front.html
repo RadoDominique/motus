@@ -56,12 +56,14 @@
             submit_response()
         }); 
       });
-    score = localStorage.getItem("score") 
-    localStorage.setItem("score",0)
+    score = localStorage.getItem("score")
+    if(localStorage.getItem("score")===null){
+        localStorage.setItem("score",0)
+    }
 
     function submit_response(){
         console.log('submit ')
-        compteur = 0
+       
         proposal = $("#valeur").val().toUpperCase()
         if(proposal.length != current_word.length){
             alert("incorrect word length")
@@ -84,8 +86,7 @@
             
         }
         if(proposal== current_word){
-            compteur = compteur+1
-            localStorage.setItem("score",compteur)
+            localStorage.setItem("score",++score)
         }
         if(score == null)
             $("score").html(0)
