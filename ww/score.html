@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <style>
+      table {
+        display: table;
+        border: 1px solid #373737;
+        margin-bottom: 20px;
+        text-align: left;
+        border-collapse: separate;
+        border-spacing: 0;
+        box-sizing: border-box;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: grey;
+    }
+
+    </style>
+    <body>
+        <script TYPE="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" 
+        crossorigin="anonymous">
+        </script>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Info</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nb Word(s) found</td>
+                    <td>42</td>
+                </tr>
+                <tr>
+                    <td>Average try</td>
+                    <td>Data</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="http://localhost:3005/front.html" target="_blank">Revenir au jeu Motus</a>
+
+    </body>
+
+    <script>
+        let scoreJson = {
+            total,
+            average 
+        }
+
+        let scoreLinea = JSON.stringify(scoreJson)
+        localStorage.setItem("score",scoreLinea)
+        localStorage.getItem("score")
+
+        score = {total : 5, average : 3.6}
+
+        localStorage.setItem("score_object", JSON.stringify(score))
+
+        var score_stringify = localStorage.getItem("score_object")
+
+        JSON.parse(score_stringify)
+    </script>
+</html>

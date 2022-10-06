@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<body>
+        <!-- Jquery -->
+        <script src="/data/Documents/Ing3/MCS/motus/ww/jquery-3.6.0.js"></script>
+
+    <script TYPE="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" 
+    crossorigin="anonymous">
+    </script>
+
+<a href="http://localhost:3005/score.html" target="_blank">Voir votre score</a>
+    <form id="formulaire" >
+        <label for="fname">My Motus App:</label><br>
+        <input type="text" id="valeur" name="valeur" value=""><br>
+        <input type="submit"  id='sub'value="Submit" onclick="submit_response()">
+    </form>
+
+
+
+    <span id="progress"></span>
+</body>
+
+    <script>
+        word_of_today = ""
+        
+        //recuperer le mot du serveur avec jquery
+        $.get("/wordguess", (data)=> {word_of_today = data})
+        
+        
+
+        document.getElementById("sub").addEventListener("click", function(event){
+            event.preventDefault()
+            });
+        //comparer le mot tapé avec mot du serveur
+        function compare() {
+            guess_word = $("#valeur").val()
+            if(guess_word== word_of_today){
+                alert(word_of_today)
+            }
+            else {
+                alert("Tu n'as pas le bon mot")
+            }
+            return false;
+        }
+
+        var current_word = "";
+
+    $.get( "/wordguess", function( data ) {
+        current_word = data.trim().toUpperCase()
+        console.log(`"${data}" ${data.length}`)
+        console.log(current_word.length)
+        $("#valeur").attr("maxlength",current_word.length)
+        $("#valeur").attr("minlength",current_word.length)
+        $("form").on("submit", function (e) {
+            e.preventDefault();
+            submit_response()
+        }); 
+      });
+
+    function submit_response(){
+        console.log('submit ')
+        proposal = $("#valeur").val().toUpperCase()
+        if(proposal.length != current_word.length){
+            alert("incorrect word length")
+        }
+        console.log(proposal+"-"+current_word)
+        proposal_analysis =""
+        var found = true;
+        for(i=0; i< current_word.length;i++){
+            letter  = proposal[i]
+            console.log(i,letter)
+            if(letter == current_word[i]){
+                proposal_analysis += getSpan(letter,'palegreen')
+            }else if(current_word.split('').includes(letter)){
+                found = false;
+                proposal_analysis += getSpan(letter,'orange')
+            }else{
+                found = false;
+                proposal_analysis += getSpan(letter,'white')
+            }
+        }
+        $("#progress").append(proposal_analysis+"<br />") 
+        $("#valeur").val('')
+        $("#valeur").focus()
+    }
+
+    function getSpan(letter, color){
+        console.log(letter)
+        return `<span style="background-color:${color}">${letter.toUpperCase()}&nbsp</span>` 
+    }
+
+    $("#response").focus()
+    </script>
+
+
+</html>

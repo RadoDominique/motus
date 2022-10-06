@@ -1,0 +1,82 @@
+<head>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="/google.font.css">
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="/css/normalize/8.0.1/normalize.css">
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="/css/milligram/1.4.1/milligram.css">
+    
+    <!-- Jquery -->
+    <script src="/jquery-3.6.0.js"></script>
+
+</head>
+<body style="font-size:45px">
+    <div class="container">
+        <div class="row">
+            <div class="column"><h1>My motus App</h1></div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <form id="'proposition'">    
+                    <input style="text-transform: uppercase;" id="response"/>
+                    <input type="submit"  id='sub'value="Submit" onclick="getSpan()">
+                </form>
+            </div>
+        </div>
+        
+        <span id="progress"></span>
+    </div>
+</body>
+    
+    <script>
+
+
+
+    var current_word = "";
+
+    $.get( "/wordguess", function( data ) {
+        current_word = data.trim().toUpperCase()
+        console.log(`"${data}" ${data.length}`)
+        console.log(current_word.length)
+        $("#response").attr("maxlength",current_word.length)
+        $("#response").attr("minlength",current_word.length)
+        $("form").on("submit", function (e) {
+            e.preventDefault();
+            submit_response()
+        }); 
+      });
+
+    function submit_response(){
+        console.log('submit ')
+        proposal = $("#response").val().toUpperCase()
+        if(proposal.length != current_word.length){
+            alert("incorrect word length")
+        }
+        console.log(proposal+"-"+current_word)
+        proposal_analysis =""
+        var found = true;
+        for(i=0; i< current_word.length;i++){
+            letter  = proposal[i]
+            console.log(i,letter)
+            if(letter == current_word[i]){
+                proposal_analysis += getSpan(letter,'palegreen')
+            }else if(current_word.split('').includes(letter)){
+                found = false;
+                proposal_analysis += getSpan(letter,'orange')
+            }else{
+                found = false;
+                proposal_analysis += getSpan(letter,'white')
+            }
+        }
+        $("#progress").append(proposal_analysis+"<br />") 
+        $("#response").val('')
+        $("#response").focus()
+    }
+
+    function getSpan(letter, color){
+        console.log(letter)
+        return `<span style="background-color:${color}">${letter.toUpperCase()}&nbsp</span>` 
+    }
+
+    $("#response").focus()
+</script>
