@@ -31,23 +31,18 @@ AUTHENTIFICATION
 ```mermaid
 
 sequenceDiagram
-    Client->>+Server: /login
-    Server->>+Client: /login
-    Client->>Server: name/mdp
-    Server->>Client:/front.html
+    Client->>+Athentification: /login
+    Athentification->>+Client: /login
+    Client->>Athentification: name/mdp
+    Athentification->>Client:/front.html
     Note right of Client: Le client a maintenant accès à la page d'accueil du jeu de motus
-    
- ```
-
- PRINCIPE DU JEU DE MOTUS ET LE SCORE
- 
- ```mermaid
-
-sequenceDiagram
-    Client->>+Server: /login
-    Server->>+Client: /login
-    Client->>Server: name/mdp
-    Server->>Client:/front.html
-    Note right of Client: Le client a maintenant accès à la page d'accueil du jeu de motus
+    Server->>+Client : 
+    note right of Client : le serveur retourne le mot du jour
+    Client->>+Client: 
+    note right of Client: le client essaie de trouver le mot du jour
+    Client->>+Score: /score.html
+    note right of Client: Le client peut verifier son score en allant sur cette page
+    Score->>+Client: /front.html
+    note right of Client: Le client peut revenir sur le jeu motus en cliquant sur le lien pour y aller
     
  ```
