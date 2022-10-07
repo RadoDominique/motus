@@ -18,7 +18,7 @@ app.use(sessions({
   secret: "scrtkey",
   // keys: ['key1', 'key2'],
   cookie: {
-    secure: true,
+    //secure: true,
     httpOnly: true,
     // domain: 'example.com',
     // path: 'foo/bar',
@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //serving public file
-app.use(express.static('ww'));
+app.use(express.static('ww_auth'));
 
 // cookie parser middleware
 app.use(cookieParser());
@@ -45,18 +45,10 @@ const mypassword = '92i'
 // a variable to save a session
 var session;
 
-app.get('/login',(req,res) =>{
-  session = req.session;
-  if(session.userid){
-    res.send("Bienvenue joueur,<a href=\'/logout'>click to logout</a>");
-  }else
-  res.sendFile('ww/login.html',{root:__dirname})
-})
-
 app.post('/user',(req,res) => {
   if(req.body.username == myusername && req.body.password == mypassword){
     session=req.session;
-    session.userid=req.body.username;
+    session.user=req.body.username;
     console.log(req.session)
     res.redirect('/front.html');
 }
@@ -66,15 +58,29 @@ else{
 }
 })
 
+app.use((req,res,next )=> {
+  console.log(req.session.user)
+  if(!req.session.user){
+    res.redirect('/login.html');
+  }else{
+    next();
+  }
+})
+
+app.use(express.static('ww'));
+
+app.get('/login',(req,res) =>{
+  session = req.session;
+  if(session.userid){
+    res.send("Bienvenue joueur,<a href=\'/logout'>click to logout</a>");
+  }else
+  res.sendFile('/login.html',{root:__dirname})
+})
+
 app.get('/logout',(req,res) => {
   req.session.destroy();
   res.redirect('/login');
 });
-
-app.use((req,res,next)=>{
- // console.log(req.path)
-  next()
-})
 
 app.get("/",(req,res)=>{
   res.send('ok')
