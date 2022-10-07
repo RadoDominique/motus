@@ -50,6 +50,6 @@ Pour la conception du microservice score :
 ```
     - Créer un deuxième serveur qui gère la fonctionnalité Score
     - Le mettre dans un autre port que celui du serveur du jeu Motus
-    -Appeler l'API Motus pour recuperer le score à chaque fois que l'utilisateur rentre les réponses
+    - Appeler l'API Motus pour recuperer le score à chaque fois que l'utilisateur rentre les réponses
 
 ```
