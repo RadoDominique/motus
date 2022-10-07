@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>Average try</td>
-                    <td id = "average">Data</td>
+                    <td id = "average"></td>
                 </tr>
             </tbody>
         </table>
@@ -48,10 +48,25 @@
     </body>
 
     <script>
+        
+        //recuperer la moyenne dans le tableau average
+        var avergageStored = JSON.parse(localStorage.getItem("average"))
+        var moyenne = ArrayAvg(avergageStored)
+        $("#average").html(moyenne);
+
+
         score = localStorage.getItem("score")
         if(score == null)
             $("score").html(0)
         else
             $("#score").html(score)
+
+        function ArrayAvg(myArray) {
+            var i = 0, summ = 0, ArrayLen = myArray.length;
+            while (i < ArrayLen) {
+                summ = summ + myArray[i++];
+            }
+            return summ / ArrayLen;
+            }
     </script>
 </html>

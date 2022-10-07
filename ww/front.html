@@ -61,9 +61,17 @@
         localStorage.setItem("score",0)
     }
 
+    
+
+    var average = []
+    localStorage.setItem("average",JSON.stringify(average))
+    /*if(localStorage.getItem("todayTry")===null){
+        localStorage.setItem("todayTry",0)
+    }*/
     function submit_response(){
+ 
         console.log('submit ')
-       
+        todayTry = localStorage.getItem("todayTry")
         proposal = $("#valeur").val().toUpperCase()
         if(proposal.length != current_word.length){
             alert("incorrect word length")
@@ -83,11 +91,25 @@
                 found = false;
                 proposal_analysis += getSpan(letter,'white')
             }
-            
         }
+
+        
+
+        //calcul average moyen
+        var avergageStored = JSON.parse(localStorage.getItem("average"))
+        avergageStored.push(todayTry)
+        localStorage.setItem("average",JSON.stringify(avergageStored))
+
         if(proposal== current_word){
             localStorage.setItem("score",++score)
+            localStorage.setItem("todayTry",0)
+            console.log("test ici")
+            todayTry = 0
         }
+
+        //incrementation de l'essai du jour
+        localStorage.setItem("todayTry",++todayTry)
+
         if(score == null)
             $("score").html(0)
         else
@@ -97,6 +119,8 @@
         $("#valeur").val('')
         $("#valeur").focus()
     }
+
+
 
     function getSpan(letter, color){
         console.log(letter)
