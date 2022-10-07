@@ -26,7 +26,6 @@ Un joueur se connecte au site via la page de login du jeu. Après avoir réussi 
 Le joueur a aussi la possibilité de regarder son score, c'est-à-dire le nombre d'essai qu'il a effectué pour pouvoir trouver le bon mot et la moyenne de ces essais; le joueur aura juste à cliquer sur la partie "Voir votre score"
 
 ### Diagramme de sequence
-AUTHENTIFICATION
 
 ```mermaid
 
@@ -42,7 +41,15 @@ sequenceDiagram
     note right of Client: le client essaie de trouver le mot du jour
     Client->>+Score: /score.html
     note right of Client: Le client peut verifier son score en allant sur cette page
+    Score->>+Client: /score.html
     Score->>+Client: /front.html
     note right of Client: Le client peut revenir sur le jeu motus en cliquant sur le lien pour y aller
-    
  ```
+Pour la conception du microservice score : 
+
+```
+    - Créer un deuxième serveur qui gère la fonctionnalité Score
+    - Le mettre dans un autre port que celui du serveur du jeu Motus
+    -Appeler l'API Motus pour recuperer le score à chaque fois que l'utilisateur rentre les réponses
+
+```
