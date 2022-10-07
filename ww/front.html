@@ -9,6 +9,7 @@
     </script>
 
 <a href="http://localhost:3005/score.html" target="_blank">Voir votre score</a>
+<!--a href="http://localhost:3006/index.html" target="_blank">Voir votre score</a-->
     <form id="formulaire" >
         <label for="fname">My Motus App:</label><br>
         <input type="text" id="valeur" name="valeur" value=""><br>
@@ -68,6 +69,7 @@
     /*if(localStorage.getItem("todayTry")===null){
         localStorage.setItem("todayTry",0)
     }*/
+    //todayTry = localStorage.getItem("todayTry")
     function submit_response(){
  
         console.log('submit ')
@@ -106,7 +108,15 @@
             console.log("test ici")
             todayTry = 0
         }
+/*
+        //ecrire le score dans un fichier
+        var fs = require('fs')
+        var logger = fs.createWriteStream('home/cytech/score.txt', {
+            flags: 'a' //'a' means appending (old data will be preserved)
+        })
+        logger.write(score)
 
+*/
         //incrementation de l'essai du jour
         localStorage.setItem("todayTry",++todayTry)
 
