@@ -17,18 +17,6 @@ const { dirname } = require('path');
 
 app.use(express.static('ww'));
 
-/*
-score_joueur = 0
-app.get('/score',(req,res)=>{
-  user = req.query.user
-  res.send({user:user,score:10})
-})
-app.get('/getScore',(req,res)=>{
-  user = req.query.user
-  res.send({user:user,score:score_joueur})
-})
-
-*/
 
 app.use((req, res, next) => {
   const allowedOrigins = ['http://localhost:3005', 'http://localhost:3006'];

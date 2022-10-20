@@ -17,21 +17,6 @@ var hostname = os.hostname();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended:true }))
 
-//app.use(express.static('ww'))
-/*
-app.use((req, res, next) => {
-  const allowedOrigin0s = ['http://localhost:3005', 'http://localhost:3006'];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-       res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  return next();
-});
-
-*/
-
 // SESSION
 app.use(sessions({
   name: 'session',
@@ -132,43 +117,6 @@ app.get('/wordFound', (req, res) => {
     res.send('ko')
   }
 })
-/*
-//connexion entre 2 serveurs
-app.get('/score',(req,res)=>{
-  var http = require('http');
-
-var options = {
-  host: 'localhost',
-  port:3006,
-  path: '/score?user='+req.session.user
-};
-
-callback = function(response) {
-  var str = '';
-
-  //another chunk of data has been received, so append it to `str`
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
-
-  //the whole response has been received, so we just print it out here
-  response.on('end', function () {
-    res.send(str);
-  });
-}
-
-http.request(options, callback).end();
-})
-
-/*
-app.post('/score', (req, res) => {
-  score = req.body;
-  console.log(score);
-  res.send(score);
-})
-*/
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
