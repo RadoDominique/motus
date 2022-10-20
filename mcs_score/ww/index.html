@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <style>
+      table {
+        display: table;
+        border: 1px solid #373737;
+        margin-bottom: 20px;
+        text-align: left;
+        border-collapse: separate;
+        border-spacing: 0;
+        box-sizing: border-box;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: grey;
+    }
+
+    </style>
+    <body>
+        <script TYPE="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" 
+        crossorigin="anonymous">
+        </script>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Info</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nb Word(s) found</td>
+                    <td id = "score">
+                        <script>
+                        score = localStorage.getItem("score")
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Average try</td>
+                    <td id = "average"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="http://localhost:3005/front.html" target="_blank">Revenir au jeu Motus</a>
+
+    </body>
+
+    <script>     
+        var un_score = 0
+        $.get("/scoreFinal",(data)=> {
+            un_score = data
+            $("#score").html(un_score);
+        })
+
+        
+
+        //recuperer la moyenne dans le tableau average
+        var avergageStored = JSON.parse(localStorage.getItem("average"))
+        //var moyenne = ArrayAvg(avergageStored)
+        //$("#average").html(moyenne);
+
+
+/*
+        function ArrayAvg(myArray) {
+            var i = 0, summ = 0, ArrayLen = myArray.length;
+            while (i < ArrayLen) {
+                summ = summ + myArray[i++];
+            }
+            return summ / ArrayLen;
+            }
+*/
+    </script>
+</html>
