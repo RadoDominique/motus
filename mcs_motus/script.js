@@ -36,12 +36,8 @@ app.use((req, res, next) => {
 app.use(sessions({
   name: 'session',
   secret: "scrtkey",
-  // keys: ['key1', 'key2'],
   cookie: {
-    //secure: true,
     httpOnly: true,
-    // domain: 'example.com',
-    // path: 'foo/bar',
     expires: expiryDate
   },
   saveUninitialized: true,
@@ -59,8 +55,8 @@ app.use(express.static('ww_auth'));
 app.use(cookieParser());
 
 //username and password
-const myusername = 'axel'
-const mypassword = '92i'
+const myusername = 'Joueur'
+const mypassword = 'Motus'
 
 // a variable to save a session
 var session;
@@ -112,12 +108,10 @@ var array = fs.readFileSync(__dirname+'/data/liste_francais_utf8.txt', 'utf8', (
         console.error(err);
     return;
   }
-  //console.log(data);
-  //res.end(data);
 
   }).toString().split("\r\n");
 
-  //appel pour recuperer le mot
+//appel pour recuperer le mot
 app.get('/wordguess', (req, res) => {
     const random = (dateJour*12);
   res.send(array[random]);

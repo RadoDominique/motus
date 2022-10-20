@@ -19,7 +19,8 @@ cd mcs_score node index.js
 ### Fonctionnalité
 
 Un joueur se connecte au site via la page de login du jeu. Après avoir réussi la connexion, le joueur pourra ensuite jouer au jeu Motus implémenté et il essaiera de deviner le mot du jour.
-Le joueur a aussi la possibilité de regarder son score, il gagne un point quand il aura trouver le mot; le joueur aura juste à cliquer sur la partie "Voir votre score"
+Le joueur a aussi la possibilité de regarder son score, il gagne un point quand il aura trouver le mot; le joueur aura juste à cliquer sur la partie "Voir votre score".
+Pour notre jeu, seul le joueur qui est defini dans le code peut se connecter au jeu, nous n'avons pas réussi à implementer un microservice d'enregistrement de joueur, le nom est "Joueur" et le mot de passe est "Motus".
 
 ### Diagramme de sequence
 
@@ -46,7 +47,7 @@ Pour la conception du microservice score :
 ```
     - Créer un deuxième serveur qui gère la fonctionnalité Score
     - Le mettre dans un autre port que celui du serveur du jeu Motus
-    - A chaque fois que le joueur trouve le bon mot, le serveur motus envoie une variable qui est utilisée par le serveur score pour actualiser et augmenter le score du joueur selon les traitements réalisés par le serveur score
+    - A chaque fois que le joueur trouve le bon mot, le serveur motus envoie une variable qui est utilisée par le serveur score pour actualiser et augmenter le score du joueur selon les traitements réalisés par le serveur score. Le score du joueur est stocké dans un fichier txt qui se nomme "data.txt" et le serveur score n'aura qu'à lire le contenu de ce fichier pour avoir accès au score du joueur.
 
 ```
 Pour la conception du microservice Authentification : 
