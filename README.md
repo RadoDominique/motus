@@ -7,12 +7,12 @@ Une application reprenant le principe du jeu de motus, c'est-à-dire essayer de 
 
 ### Usage
 Nous avons essayé de créer un dockerfile pour lancer le projet ensemble mais ...
-Il faut donc lancer les services une par une comme ci-dessous:
-Faire
+Il faut donc lancer les services une par une, pour cela, il faut naviguer dans le repertoire de chaque microservice et lancer le script js.
+Faire :
 
 ```
-cd mcs_motus node script.js
-cd mcs_score node index.js
+cd mcs_motus puis node script.js
+cd mcs_score puis node index.js
 
 ```
 
