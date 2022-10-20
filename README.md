@@ -11,7 +11,8 @@ Il faut donc lancer les services une par une, pour cela, il faut naviguer dans l
 Faire :
 
 ```
-cd mcs_motus puis node script.js
+cd mcs_motus puis npm install express express-session cookie-parser
+ puis node script.js
 cd mcs_score puis node index.js
 
 ```
