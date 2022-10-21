@@ -1,8 +1,18 @@
 version: '3.1'
 
 services:
-  df:
-    image: node-image
+  motus:
+    image: motus
     ports:
-      - "3000:3000"
-    restart : always
+      - "3005:3005"
+    build: 
+      context: .
+      dockerfile: Dockerfile-motus
+
+  score:
+    image: score
+    ports: 
+      - "3006:3006"
+    build: 
+      context: .
+      dockerfile: Dockerfile-score

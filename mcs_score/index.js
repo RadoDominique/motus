@@ -36,7 +36,6 @@ app.get('/', (req, res) => {
 
 app.post('/scoreFinal', (req, res) => {
   test=req.body;
-
   var score_local = readFileSync('data.txt','utf-8').toString().split('\n');
   leScore = parseInt(test.test)
   var score_stored = score_local[0]
@@ -46,7 +45,6 @@ app.post('/scoreFinal', (req, res) => {
     console.log("Valeur du score du joueur: ",new_score)
     fs.writeFileSync('data.txt',`${new_score}`,'utf-8')
   }
-
   res.send({nouveau_score:new_score})
 })
 app.get('/scoreFinal', (req, res) => {
