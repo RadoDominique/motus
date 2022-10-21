@@ -17,6 +17,14 @@ cd mcs_score puis node index.js
 
 ```
 
+Pour lancer avec docker, il faut installer au prealable docker en suivant ce lien : https://docs.docker.com/  
+Puis il faut juste taper :
+ 
+```
+    sudo docker-compose up
+
+```
+
 ### Fonctionnalité
 
 Un joueur se connecte au site via la page de login du jeu. Après avoir réussi la connexion, le joueur pourra ensuite jouer au jeu Motus implémenté et il essaiera de deviner le mot du jour.
