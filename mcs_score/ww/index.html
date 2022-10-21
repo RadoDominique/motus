@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html>
     <style>
-      table {
-        display: table;
-        border: 1px solid #373737;
-        margin-bottom: 20px;
-        text-align: left;
-        border-collapse: separate;
-        border-spacing: 0;
-        box-sizing: border-box;
-        text-indent: initial;
-        border-spacing: 2px;
-        border-color: grey;
-    }
+        table {
+            display: table;
+            border: 1px solid #373737;
+            margin-bottom: 20px;
+            text-align: left;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-sizing: border-box;
+            text-indent: initial;
+            border-spacing: 2px;
+            border-color: grey;
+        }
+        body {
+            background-image: url('https://wallpaperaccess.com/full/3750995.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        table {
+            border: 1px solid black;
+            margin: 0px auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        header {
+            font-size: 36px;
+            font-size: 2.25rem;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            
+            margin: auto;
+        }
 
     </style>
     <body>
         <script TYPE="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" 
         crossorigin="anonymous">
         </script>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Info</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nb Word(s) found</td>
-                    <td id = "score">
-                        <script>
-                        score = localStorage.getItem("score")
-                        </script>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Average try</td>
-                    <td id = "average"></td>
-                </tr>
-            </tbody>
-        </table>
-
+        <header>Bienvenue sur votre page de score</header>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Information</th>
+                        <th>Valeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nombre de mot trouvé</td>
+                        <td id = "score">
+                            <script>
+                            score = localStorage.getItem("score")
+                            </script>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <a href="http://localhost:3005/front.html" target="_blank">Revenir au jeu Motus</a>
 
     </body>

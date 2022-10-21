@@ -110,7 +110,7 @@ app.post('/wordFound', (req, res) => {
 })
 app.get('/wordFound', (req, res) => {
   if( Word_found && Word_found.word_found){
-    console.log(`testtttttt ${Word_found.word_found}`);
+    console.log(`test ${Word_found.word_found}`);
     res.send(Word_found).word_found;
   }
   else{
@@ -119,7 +119,7 @@ app.get('/wordFound', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Motus listening on port ${port}`)
 })
 
 //api /port

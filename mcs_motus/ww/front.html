@@ -8,19 +8,38 @@
             margin-right: auto;
         }
 
+        body {
+            background-image: url('https://wallpaperaccess.com/full/3750995.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        form {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
 
-
+        #span {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            
+            margin: auto;
+        }
     </style>
-
     <script TYPE="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" 
     crossorigin="anonymous">
     </script>
-
-
     <a href="http://localhost:3006" target="_blank">Voir votre score</a>
-    <!--a href="http://localhost:3006/index.html" target="_blank">Voir votre score</a-->
-    <form id="formulaire"  style="text-align: center; ">
-        <label for="fname">My Motus App:</label><br>
+    <form id="formulaire" >
+        <label for="fname">Bienvenue sur le jeu du Motus</label><br>
         <input type="text" id="valeur" name="valeur" value=""><br>
         <input type="submit"  id='sub'value="Submit" onclick="submit_response()">
     </form>
@@ -29,13 +48,16 @@
 
     <script>$("#wordLength").html(wordLength)</script>
 
-    <td id = "wordLength" style="text-align: center; "> est le nombre de lettre;
+    <td id = "wordLength"> est le nombre de lettre;
     <script>
         wordLength = localStorage.getItem("wordLength")
     </script>
-     essayez de deviner le mot maintenant</td>
+     essayez de deviner le mot maintenant. Une fois le mot trouvé, vous pouvez regarder votre score</td>
 
-    <span id="progress" style="text-align: center; "></span>
+    <div id="span">
+        <span id="progress" style="text-align: center; "></span>
+    </div>
+    
 
 </body>
 
