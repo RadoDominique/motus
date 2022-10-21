@@ -2,14 +2,31 @@
 
 FROM node:16.10.0
 
-WORKDIR ~/Desktop/motus/
+
 
 COPY ./* ./
 
 RUN npm install
 
+RUN npm install dotenv --save
+
+RUN npm install typescript -s -g
+
+RUN npm install ts-node --save-dev
+
+RUN npm install oidc-client --save
+
+RUN npm install mustache-express --save
+
+RUN npm install openid-client --save
+
+RUN npm install @types/express -s
+
 RUN npm install express express-session cookie-parser
+
 
 COPY . .
 
-CMD [ "node", "script.js" ]
+CMD ["tsc", "index.ts"]
+
+CMD [ "node", "-r", "dotenv/config", "index.js" ]
