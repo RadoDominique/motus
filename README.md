@@ -6,8 +6,8 @@
 Une application reprenant le principe du jeu de motus, c'est-à-dire essayer de deviner le mot du jour. Arriver sur la page du jeu, le joueur n'aura que le nombre de lettre du mot comme information pour pouvoir deviner le mot, il joueur aura néanmoins un nombre d'essai illimité pour deviner ce dernier. A chaque tentative, la proposition du joueur sera affichée sur l'écran et chaque lettre de sa proposition sera colorée par une couleur en fonction de si oui ou non la lettre se trouve ou non dans le mot et si la lettre est située à la bonne place.
 
 ### Usage
-Nous avons essayé de créer un dockerfile pour lancer le projet ensemble mais ...
-Il faut donc lancer les services une par une, pour cela, il faut naviguer dans le repertoire de chaque microservice et lancer le script js.
+Nous avons essayé de créer un dockerfile pour lancer le projet ensemble. Il existe donc deux méthodes pour lancer ce dernier.
+La première methode serait de lancer les services une par une, pour cela, il faut naviguer dans le repertoire de chaque microservice et lancer le script js.
 Faire :
 
 ```
@@ -17,11 +17,12 @@ cd mcs_score puis node index.js
 
 ```
 
-Pour lancer avec docker, il faut installer au prealable docker en suivant ce lien : https://docs.docker.com/  
-Puis il faut juste taper :
+La deuxième est de le lancer avec docker, il faut installer au prealable docker en suivant ce lien : https://docs.docker.com/ pour la documentation officielle.
+Puis après installation de docker, il faut juste taper :
  
 ```
     sudo docker-compose up
+    - ajouter l'option --remove-orphan en cas d'erreur de "flag"
 
 ```
 
@@ -36,10 +37,10 @@ Pour notre jeu, seul le joueur qui est defini dans le code peut se connecter au 
 ```mermaid
 
 sequenceDiagram
-    Client->>+Athentification: /login
-    Athentification->>+Client: /login
-    Client->>Athentification: name/mdp
-    Athentification->>Client:/front.html
+    Client->>+Athentification Google: /login
+    Athentification Google->>+Client: /login
+    Client->>Athentification Google: 
+    Athentification Google->>Client:/front.html
     Note right of Client: Le client a maintenant accès à la page d'accueil du jeu de motus
     Motus->>+Client : 
     note right of Client : le serveur retourne le mot du jour
@@ -62,7 +63,12 @@ Pour la conception du microservice score :
 Pour la conception du microservice Authentification : 
 
 ```
-    - nous avons essayer de mettre en place une authentification avec le serveur de Google
-    - nous avons réussi à avoir 
+    - nous avons mis en place une authentification avec le serveur de Google
+    - 
 
 ```
+
+### Suite possible
+
+Pour la suite du projet, au niveau du score il aurait été pas mal d'implementer aussi le nombre d'essai moyen du joueur pour avoir un peu plus d'information pour son score.
+Nous aurions aussi pu ameliorer le visuel du projet.
