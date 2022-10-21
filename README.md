@@ -57,7 +57,7 @@ sequenceDiagram
     Client->>+Score: localhost:3006
     note right of Client: Le client peut verifier son score en allant sur cette page qui se trouve dans le serveur score
     Score->>+Client: 
-    Score->>+Client: localhost:3005/front.html
+    Score->>+Client: localhost:3005
     note right of Client: Le client peut revenir sur le jeu motus en cliquant sur le lien pour y aller
  ```
 Pour la conception du microservice score : 
