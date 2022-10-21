@@ -41,7 +41,6 @@
             bottom: 0;
             left: 0;
             right: 0;
-            
             margin: auto;
         }
 
@@ -70,8 +69,9 @@
                     </tr>
                 </tbody>
             </table>
+            <a href="http://localhost:3005/private" target="_blank">Revenir au jeu Motus</a>
         </div>
-        <a href="http://localhost:3005/private" target="_blank">Revenir au jeu Motus</a>
+        
 
     </body>
 
@@ -81,23 +81,5 @@
             un_score = data
             $("#score").html(un_score);
         })
-
-        
-
-        //recuperer la moyenne dans le tableau average
-        var avergageStored = JSON.parse(localStorage.getItem("average"))
-        //var moyenne = ArrayAvg(avergageStored)
-        //$("#average").html(moyenne);
-
-
-/*
-        function ArrayAvg(myArray) {
-            var i = 0, summ = 0, ArrayLen = myArray.length;
-            while (i < ArrayLen) {
-                summ = summ + myArray[i++];
-            }
-            return summ / ArrayLen;
-            }
-*/
     </script>
 </html>

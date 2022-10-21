@@ -54,8 +54,8 @@
 
 
     <form id="formulaire" >
-        <div>connexion réussie !</div><br>
-        <p>Hi {{name}} - {{email}}</p><br>
+        <div>BIENVENUE CHER JOUEUR</div><br>
+        <p>Bonjour  {{name}} - {{email}}</p><br>
         <img src={{picture}} /><br>
         <br><br>
         <label for="fname">My Motus App:</label><br>
@@ -69,11 +69,11 @@
 
     <script>$("#wordLength").html(wordLength)</script>
 
-    <td id = "wordLength"> est le nombre de lettre;
+    <td id = "wordLength">  est le nombre de lettre. <br>
     <script>
         wordLength = localStorage.getItem("wordLength")
     </script>
-     essayez de deviner le mot maintenant. Une fois le mot trouvé, vous pouvez regarder votre score</td>
+     Essayez de deviner le mot maintenant. <br>Une fois le mot trouvé, vous pouvez regarder votre score</td>
 
     <div id="span">
         <span id="progress" style="text-align: center; "></span>
@@ -81,15 +81,11 @@
     
 
 </body>
-
     <script>
     document.getElementById("sub").addEventListener("click", function(event){
         event.preventDefault()
     });
-
-
     var current_word = "";
-
     $.get( "/wordguess", function( data ) {
         current_word = data.trim().toUpperCase()
         console.log(`"${data}" ${data.length}`)
@@ -103,16 +99,12 @@
             submit_response()
         }); 
       });
-
     score = localStorage.getItem("score")
     if(localStorage.getItem("score")===null){
         localStorage.setItem("score",0)
     }
-
     wordLength = localStorage.getItem("wordLength")
-
     var word_found = 0
-
     var average = []
     localStorage.setItem("average",JSON.stringify(average))
     function submit_response(){
@@ -164,10 +156,7 @@
             word_found = 0;
             $.post("http://localhost:3006/scoreFinal", "test=0")
         }
-
     }
-
-
 
     function getSpan(letter, color){
         console.log(letter)

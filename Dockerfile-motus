@@ -2,8 +2,6 @@
 
 FROM node:16.10.0
 
-
-
 COPY ./* ./
 
 RUN npm install
@@ -21,9 +19,6 @@ RUN npm install mustache-express --save
 RUN npm install openid-client --save
 
 RUN npm install @types/express -s
-
-RUN npm install express express-session cookie-parser
-
 
 COPY . .
 

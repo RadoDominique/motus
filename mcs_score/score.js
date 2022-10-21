@@ -1,22 +1,14 @@
 const http = require('http');
 const express = require('express')
 const app = express();
-const sessions = require('express-session')
 var bodyParser = require('body-parser')
-const cookieParser = require("cookie-parser");
-const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 const {readFileSync, writeFileSyn, promises: fsPromises} = require('fs');
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended:true }))
-
 const port = process.env.PORT || 3006 ;
 const fs = require('fs');
 
-const { dirname } = require('path');
-
 app.use(express.static('ww'));
-
 
 app.use((req, res, next) => {
   const allowedOrigins = ['http://localhost:3005', 'http://localhost:3006'];
@@ -28,7 +20,6 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   return next();
 });
-
 
 app.get('/', (req, res) => {
   res.redirect("http://localhost:3006/index.html");
@@ -47,12 +38,12 @@ app.post('/scoreFinal', (req, res) => {
   }
   res.send({nouveau_score:new_score})
 })
+
 app.get('/scoreFinal', (req, res) => {
   test1 = fs.readFileSync('data.txt', 'utf-8').split('\n')[0];
   console.log("resultat du get/scoreFinal :",test1);
   res.send(test1);
 })
-
 
 app.listen(port, () => {
   console.log(`Score app listening on port ${port}`)
