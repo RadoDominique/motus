@@ -14,7 +14,7 @@ Faire :
 cd mcs_motus puis faire tous les npm install suivant : dotenv --save / typescript -s -g / ts-node --save-dev /  oidc-client --save / mustache-express --save / openid-client --save /  @types/express -s / express express-session cookie-parser
  puis tsc index.ts puis node -r dotenv/config index.js
 cd mcs_score puis node index.js
-
+localhost:3005
 ```
 
 La deuxième est de le lancer avec docker, il faut installer au prealable docker en suivant ce lien : https://docs.docker.com/ pour la documentation officielle.
@@ -23,6 +23,7 @@ Puis après installation de docker, il faut juste taper :
 ```
     sudo docker-compose up
     - ajouter l'option --remove-orphan en cas d'erreur de "flag"
+    localhost:3005
 
 ```
 
